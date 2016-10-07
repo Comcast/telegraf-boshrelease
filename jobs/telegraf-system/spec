@@ -1,0 +1,25 @@
+---
+name: telegraf-system
+
+templates:
+  bin/telegraf-system_ctl: bin/telegraf-system_ctl
+  bin/pid_utils.sh: bin/pid_utils.sh
+  config/telegraf.conf.erb: config/telegraf.conf
+
+packages:
+- telegraf
+
+properties:
+  telegraf.tags:
+   description: Telegraf global tags as a dictionary
+   default: {}
+
+  telegraf.influxdb.url:
+    description: InfluxDB url
+    default: http://localhost:8086
+  telegraf.influxdb.database:
+    description: InfluxDB database
+    default: system
+  telegraf.influxdb.retention_policy:
+    description: InfluxDB database retention policy
+    default: autogen

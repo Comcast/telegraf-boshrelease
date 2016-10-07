@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+set -u
+
+tar xfz telegraf/telegraf-*.tar.gz \
+  --strip-components 3 \
+  --wildcards \
+  -C $BOSH_INSTALL_TARGET './*/usr/bin/telegraf'
