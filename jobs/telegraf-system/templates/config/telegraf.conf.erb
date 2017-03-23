@@ -22,6 +22,7 @@
 [[inputs.disk]]
   ignore_fs = ["tmpfs", "devtmpfs", "none"]
 [[inputs.diskio]]
+  # individual partitions can be reported using "sda1" syntax
   devices = ["sda", "sdb", "sdc"]
 [[inputs.kernel]]
 [[inputs.mem]]
@@ -29,6 +30,9 @@
 [[inputs.swap]]
 [[inputs.system]]
 [[inputs.net]]
+  # interface "all" used for system wide ip/tcp/udp/icmp stats
+  # explicitly list interface "eth0" to avoid including bridged interfaces
+  interfaces = ["all", "eth0"]
 [[inputs.netstat]]
 [[inputs.nstat]]
   dump_zeros = true
