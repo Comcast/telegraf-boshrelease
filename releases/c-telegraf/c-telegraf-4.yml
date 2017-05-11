@@ -1,0 +1,16 @@
+---
+packages:
+- name: telegraf
+  version: 4a3ee41de414086bafa39712c02b1f1505445255
+  fingerprint: 4a3ee41de414086bafa39712c02b1f1505445255
+  sha1: 801551de80f9bfc64153b1d239a1ac16195cd865
+  dependencies: []
+jobs:
+- name: telegraf-system
+  version: 8a88b0ae6a822cf459b3d35cba10a51fff530ff2
+  fingerprint: 8a88b0ae6a822cf459b3d35cba10a51fff530ff2
+  sha1: cfce93784322c07d39f9954753c76583309ac883
+commit_hash: d951c9e8
+uncommitted_changes: true
+name: c-telegraf
+version: '4'
