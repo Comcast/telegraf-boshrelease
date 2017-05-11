@@ -35,4 +35,6 @@
   interfaces = ["all", "eth0"]
 [[inputs.netstat]]
 [[inputs.nstat]]
+  # Disable IPv6
+  proc_net_snmp6 = "/dev/null"
   dump_zeros = true
