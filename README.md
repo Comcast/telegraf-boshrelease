@@ -2,10 +2,10 @@
 
 ## Deploy using BOSH add on
 
-* Download release tarball from https://github.comcast.com/cloud/bosh-release-telegraf/releases
+* Download release tarball from https://github.com/Comcast/telegraf-boshrelease/releases
 * Upload release to BOSH director
 
-        bosh upload release c-telegraf-3.tgz
+        bosh upload release c-telegraf-4.tgz
 
 * Update BOSH runtime config with telegraf job configuration as listed below
 
@@ -19,7 +19,7 @@
 
     releases:
     - name: c-telegraf
-      version: 3
+      version: 4
     addons:
     - name: c-telegraf
       jobs:
@@ -28,8 +28,8 @@
       properties:
         telegraf:
           tags:
-            site: g2
+            region: us-east-1
           influxdb:
-            url: http://cfsvc-influx.app.cloud.comcast.net:8086
-            database: cf-system
+            url: http://influxdb.example.com:8086
+            database: system
             retention_policy: default
