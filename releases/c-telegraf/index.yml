@@ -1,11 +1,12 @@
----
 builds:
-  a8b815c2-9a70-4860-b921-1a07538305cc:
-    version: '1'
   05310e8e-ccdd-41b3-9fb1-92bec9eb507a:
-    version: '2'
+    version: "2"
   84fe4307-02b2-4e26-830d-b8fee9738ccf:
-    version: '3'
+    version: "3"
+  a8b815c2-9a70-4860-b921-1a07538305cc:
+    version: "1"
   bf997807-9973-4ffb-9179-bafc149ab129:
-    version: '4'
-format-version: '2'
+    version: "4"
+  c2d2ec26-3adc-466d-5ea7-cd3ff0ba2e1c:
+    version: "5"
+format-version: "2"

@@ -1,0 +1,19 @@
+name: c-telegraf
+version: "5"
+commit_hash: c830fab
+uncommitted_changes: false
+jobs:
+- name: telegraf-system
+  version: 96ae346c0f068f59f1e218ee60aec1df59c7bc87
+  fingerprint: 96ae346c0f068f59f1e218ee60aec1df59c7bc87
+  sha1: e8baff5688f477a2e47d34e4e54184ecffc235ed
+packages:
+- name: telegraf
+  version: 0e8be1b5a9065b548c7161c5ba92280a0e3404ac
+  fingerprint: 0e8be1b5a9065b548c7161c5ba92280a0e3404ac
+  sha1: 01abec84beb54dfdefc2b218a798350225b023eb
+  dependencies: []
+license:
+  version: ecb69af00d6b68607b236d204acc0a6a1770e666
+  fingerprint: ecb69af00d6b68607b236d204acc0a6a1770e666
+  sha1: 6b729e2051ac3b02bc224c21519afbf63cccb051
