@@ -1,11 +1,12 @@
 # Telegraf release for BOSH
 
-## Deploy using BOSH add on
+## Deploy with BOSH add-on
 
-* Download release tarball from https://github.com/Comcast/telegraf-boshrelease/releases
+Instructions below are for bosh v2 client.
+
 * Upload release to BOSH director
 
-        bosh upload release c-telegraf-4.tgz
+        bosh upload-release https://github.com/Comcast/telegraf-boshrelease/releases/download/v5/c-telegraf-5.tgz
 
 * Update BOSH runtime config with telegraf job configuration as listed below
 
@@ -13,13 +14,13 @@
         bosh runtime-config
         # merge with content listed below and save in file runtime-config.yml
         # upload runtime config
-        bosh upload runtime-config runtime-config.yml
+        bosh update-runtime-config runtime-config.yml
 
 ## Example of `runtime-config.yml` file
 
     releases:
     - name: c-telegraf
-      version: 4
+      version: 5
     addons:
     - name: c-telegraf
       jobs:
