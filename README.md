@@ -2,11 +2,9 @@
 
 ## Deploy with BOSH add-on
 
-Instructions below are for bosh v2 client.
-
 * Upload release to BOSH director
 
-        bosh upload-release https://github.com/Comcast/telegraf-boshrelease/releases/download/v5/c-telegraf-5.tgz
+        bosh upload-release https://github.com/Comcast/telegraf-boshrelease/releases/download/v6/c-telegraf-6.tgz
 
 * Update BOSH runtime config with telegraf job configuration as listed below
 
@@ -20,7 +18,7 @@ Instructions below are for bosh v2 client.
 
     releases:
     - name: c-telegraf
-      version: 5
+      version: 6
     addons:
     - name: c-telegraf
       jobs:
