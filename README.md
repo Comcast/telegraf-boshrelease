@@ -4,7 +4,7 @@
 
 * Upload release to BOSH director
 
-        bosh upload-release https://github.com/Comcast/telegraf-boshrelease/releases/download/v6/c-telegraf-6.tgz
+        bosh upload-release https://github.com/Comcast/telegraf-boshrelease/releases/download/v7/c-telegraf-7.tgz
 
 * Update BOSH runtime config with telegraf job configuration as listed below
 
@@ -18,7 +18,7 @@
 
     releases:
     - name: c-telegraf
-      version: 6
+      version: 7
     addons:
     - name: c-telegraf
       jobs:
