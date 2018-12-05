@@ -21,7 +21,7 @@
   percpu = false
   totalcpu = true
 [[inputs.disk]]
-  ignore_fs = ["tmpfs", "devtmpfs", "none"]
+  ignore_fs = ["tmpfs", "devtmpfs", "none", "overlay"]
 [[inputs.diskio]]
   # individual partitions can be reported using "sda1" syntax
   devices = ["sda", "sdb", "sdc", "xvda", "xvdb", "xvdc"]
