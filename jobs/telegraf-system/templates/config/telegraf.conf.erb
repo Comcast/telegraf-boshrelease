@@ -2,6 +2,7 @@
   service = "<%= spec.deployment.sub(/-[0-9a-f]{20}$/, '') %>"
   node_type = "<%= spec.name %>"
   instance = "<%= spec.index %>"
+  az = "<%= spec.az %>"
   <% if_p("telegraf.tags") do |tags| tags.each do |tag, value| %>
   <%= tag %> = "<%= value %>"
   <% end; end %>
