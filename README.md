@@ -20,17 +20,22 @@ releases:
   sha1: 416087f6f0477c41189674d8da393717d61f7be6
   url: https://github.com/Comcast/telegraf-boshrelease/releases/download/v8/c-telegraf-8.tgz
   version: 8
+
 addons:
 - name: c-telegraf
+  include:
+    stemcell:
+    - os: ubuntu-trusty
+    - os: ubuntu-xenial
   jobs:
   - name: telegraf-system
     release: c-telegraf
-  properties:
-    telegraf:
-      tags:
-        region: us-east-1
-      influxdb:
-        url: http://influxdb.example.com:8086
-        database: system
-        retention_policy: default
+    properties:
+      telegraf:
+        influxdb:
+          url: http://influxdb.example.com:8086
+          database: system
+          retention_policy: default
+        tags:
+          region: us-east-1
 ```
