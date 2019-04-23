@@ -17,9 +17,9 @@ bosh update-runtime-config runtime-config.yml
 ```yaml
 releases:
 - name: c-telegraf
-  sha1: 416087f6f0477c41189674d8da393717d61f7be6
-  url: https://github.com/Comcast/telegraf-boshrelease/releases/download/v8/c-telegraf-8.tgz
-  version: 8
+  sha1: c714124b04e1c1a718be96d935f87a6faaaf8fb2
+  url: https://github.com/Comcast/telegraf-boshrelease/releases/download/v9/c-telegraf-9.tgz
+  version: 9
 
 addons:
 - name: c-telegraf
