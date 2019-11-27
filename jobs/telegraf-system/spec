@@ -23,3 +23,6 @@ properties:
   telegraf.influxdb.retention_policy:
     description: InfluxDB database retention policy
     default: autogen
+  telegraf.prometheus.port:
+    description: Prometheus Bind Port
+    default: 9391
