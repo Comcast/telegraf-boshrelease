@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright 2017 Comcast Cable Communications Management, LLC
+# Copyright 2023 Comcast Cable Communications Management, LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 set -e
 set -u
 
+# shellcheck disable=SC2250
 tar xfz telegraf/telegraf-*.tar.gz \
   --strip-components 3 \
   --wildcards \
-  -C $BOSH_INSTALL_TARGET './*/usr/bin/telegraf'
+  -C "$BOSH_INSTALL_TARGET" './*/usr/bin/telegraf'

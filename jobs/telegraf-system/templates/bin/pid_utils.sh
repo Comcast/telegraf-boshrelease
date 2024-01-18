@@ -1,10 +1,11 @@
-SCRIPT=$(basename $0)
+# shellcheck disable=SC2148,SC2250,SC2312
+SCRIPT=$(basename "$0")
 mkdir -p /var/vcap/sys/log/monit
 
-exec 1>> /var/vcap/sys/log/monit/$SCRIPT.log
-exec 2>> /var/vcap/sys/log/monit/$SCRIPT.err.log
+exec 1>> /var/vcap/sys/log/monit/"$SCRIPT".log
+exec 2>> /var/vcap/sys/log/monit/"$SCRIPT".err.log
 
-echo "------------ `basename $0` $* at `date` --------------" | tee /dev/stderr
+echo "------------ $(basename "$0") $* at $(date) --------------" | tee /dev/stderr
 
 function pid_is_running() {
   declare pid="$1"
@@ -25,7 +26,7 @@ function pid_guard() {
 
   echo "------------ STARTING $(basename "$0") at $(date) --------------" | tee /dev/stderr
 
-  if [ ! -f "${pidfile}" ]; then
+  if [[ ! -f "${pidfile}" ]]; then
     return 0
   fi
 
@@ -63,7 +64,7 @@ function wait_pid_death() {
       return 0
     fi
 
-    if [ ${countdown} -le 0 ]; then
+    if [[ "${countdown}" -le 0 ]]; then
       return 1
     fi
 
@@ -89,7 +90,7 @@ function wait_pid_death() {
 function kill_and_wait() {
   declare pidfile="$1" timeout="${2:-25}" sigkill_on_timeout="${3:-1}"
 
-  if [ ! -f "${pidfile}" ]; then
+  if [[ ! -f "${pidfile}" ]]; then
     echo "Pidfile ${pidfile} doesn't exist"
     exit 0
   fi
@@ -97,7 +98,7 @@ function kill_and_wait() {
   local pid
   pid=$(head -1 "${pidfile}")
 
-  if [ -z "${pid}" ]; then
+  if [[ -z "${pid}" ]]; then
     echo "Unable to get pid from ${pidfile}"
     exit 1
   fi
@@ -112,7 +113,7 @@ function kill_and_wait() {
   kill "${pid}"
 
   if ! wait_pid_death "${pid}" "${timeout}"; then
-    if [ "${sigkill_on_timeout}" = "1" ]; then
+    if [[ "${sigkill_on_timeout}" = "1" ]]; then
       echo "Kill timed out, using kill -9 on ${pid}"
       kill -9 "${pid}"
       sleep 0.5
@@ -133,12 +134,11 @@ check_mount() {
   exports=$2
   mount_point=$3
 
-  if grep -qs $mount_point /proc/mounts; then
+  if grep -qs "$mount_point" /proc/mounts; then
     echo "Found NFS mount $mount_point"
   else
     echo "Mounting NFS..."
-    mount $opts $exports $mount_point
-    if [ $? != 0 ]; then
+    if ! mount "$opts" "$exports" "$mount_point"; then
       echo "Cannot mount NFS from $exports to $mount_point, exiting..."
       exit 1
     fi
@@ -155,9 +155,7 @@ install_sudoers() {
   src="$1"
   dest="$2"
 
-  check_sudoers "$src"
-
-  if [ $? -eq 0 ]; then
+  if check_sudoers "$src"; then
     chown root:root "$src"
     chmod 0440 "$src"
     cp -p "$src" "$dest"
@@ -173,7 +171,7 @@ file_must_include() {
   line="$2"
 
   # Protect against empty $file so it doesn't wait for input on stdin.
-  if [ -n "$file" ]; then
+  if [[ -n "$file" ]]; then
     grep --quiet "$line" "$file" || echo "$line" >> "$file"
   else
     echo 'File name is required'

@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 #
-# Copyright 2017 Comcast Cable Communications Management, LLC
+# Copyright 2023 Comcast Cable Communications Management, LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# shellcheck disable=SC2250
 
 JOB_NAME=telegraf-system
 
@@ -21,34 +23,35 @@ RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 PIDFILE=$RUN_DIR/$JOB_NAME.pid
 
-source $JOB_DIR/bin/pid_utils.sh
+# shellcheck disable=SC1091
+source "$JOB_DIR"/bin/pid_utils.sh
 
 case $1 in
   start)
-    pid_guard $PIDFILE $JOB_NAME
+    pid_guard "$PIDFILE" "$JOB_NAME"
 
-    mkdir -p $RUN_DIR
-    mkdir -p $LOG_DIR
+    mkdir -p "$RUN_DIR"
+    mkdir -p "$LOG_DIR"
 
     PATH=/var/vcap/packages/telegraf/bin:$PATH
 
     # check configuration
     echo "checking telegraf configuration..."
-    telegraf --config $JOB_DIR/config/telegraf.conf --test > /dev/null
+    telegraf --config "$JOB_DIR"/config/telegraf.conf --test > /dev/null
     echo "telegraf configuration OK"
     echo
 
     # store pid in $PIDFILE
-    echo $$ > $PIDFILE
+    echo $$ > "$PIDFILE"
 
     exec telegraf \
-      --config $JOB_DIR/config/telegraf.conf \
-      >>$LOG_DIR/$JOB_NAME.log 2>&1
+      --config "$JOB_DIR"/config/telegraf.conf \
+      >>"$LOG_DIR/$JOB_NAME.log" 2>&1
 
     ;;
 
   stop)
-    kill_and_wait $PIDFILE
+    kill_and_wait "$PIDFILE"
     ;;
 
   *)
