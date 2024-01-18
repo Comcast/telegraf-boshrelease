@@ -1,4 +1,4 @@
-telegraf/telegraf-1.9.0_linux_amd64.tar.gz:
-  size: 17421346
-  object_id: d21b3aff-e5d2-4416-5dbe-8d414c6a18d4
-  sha: cc16db48f005a5a965d986523bc48c1404eb9d4c
+telegraf/telegraf-1.29.2_linux_amd64.tar.gz:
+  size: 59286100
+  object_id: 2aecf555-01bb-4614-73d7-5c262c035523
+  sha: sha256:79edf49d7018dec41a3622c841e9f3cca2be8a85e841759a3590e456815885c1
