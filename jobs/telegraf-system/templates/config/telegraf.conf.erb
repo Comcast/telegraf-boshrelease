@@ -17,6 +17,11 @@
   database = "<%= p("telegraf.influxdb.database") %>"
   retention_policy = "<%= p("telegraf.influxdb.retention_policy") %>"
 
+<% if telegraf.prometheus.port? %>
+[[outputs.prometheus]]
+  port = ["<%= telegraf.prometheus.port %>"]
+<% end %>
+
 [[inputs.cpu]]
   percpu = false
   totalcpu = true
